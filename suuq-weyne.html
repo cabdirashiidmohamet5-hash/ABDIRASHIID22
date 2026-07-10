@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suuq Weyne — Dhul, Guryo, Apartment & Meherado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0a1628;
+    --navy-900:#0f1f38;
+    --navy-800:#152a4a;
+    --navy-700:#1e3a5f;
+    --primary:#1d5c8a;      /* muted teal-blue - primary */
+    --primary-light:#3a7cad;
+    --secondary:#2f7d6b;    /* deep emerald-teal - secondary */
+    --secondary-light:#4a9c89;
+    --amber:#d69a3a;
+    --amber-light:#f0b654;
+    --amber-dark:#b3792a;
+    --cream:#f6f3ec;
+    --paper:#fbf9f4;
+    --ink:#1a1f2b;
+    --ink-soft:#5a6478;
+    --line:rgba(15,31,56,0.10);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ===== Top bar ===== */
+  .topbar{
+    background:var(--navy-950);
+    color:#cdd8e6;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+  }
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:8px 28px;}
+  .topbar span.amberdot{color:var(--amber-light);}
+
+  /* ===== Header ===== */
+  header.main{
+    background:var(--navy-900);
+    position:sticky; top:0; z-index:50;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  header.main .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+  }
+  .logo{display:flex; align-items:center; gap:10px;}
+  .logo-mark{
+    width:38px; height:38px; border-radius:8px;
+    background:linear-gradient(135deg, var(--amber-light), var(--amber-dark));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:700; color:var(--navy-950);
+    font-size:1.15rem;
+  }
+  .logo-text{color:#fff;}
+  .logo-text .display{font-size:1.35rem; font-weight:700; line-height:1;}
+  .logo-text small{color:var(--amber-light); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;}
+
+  nav.mainnav{display:flex; gap:30px;}
+  nav.mainnav a{
+    color:#dbe3ee; font-weight:600; font-size:0.92rem;
+    padding:6px 0; border-bottom:2px solid transparent;
+    transition:border-color .2s, color .2s;
+  }
+  nav.mainnav a:hover{border-color:var(--amber); color:#fff;}
+
+  .header-actions{display:flex; align-items:center; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 20px; border-radius:7px; font-weight:700; font-size:0.88rem;
+    cursor:pointer; border:1px solid transparent; transition:all .2s;
+  }
+  .btn-amber{background:var(--amber); color:var(--navy-950);}
+  .btn-amber:hover{background:var(--amber-light);}
+  .btn-ghost{background:transparent; color:#e7edf5; border-color:rgba(255,255,255,0.25);}
+  .btn-ghost:hover{border-color:var(--amber-light); color:var(--amber-light);}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse at 75% 20%, rgba(214,154,58,0.18), transparent 55%),
+      linear-gradient(180deg, var(--navy-950), var(--navy-800) 120%);
+    color:#fff;
+    padding:76px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; right:-120px; top:-80px; width:420px; height:420px;
+    border:1px solid rgba(214,154,58,0.18); border-radius:50%;
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--amber-light); font-weight:700; font-size:0.78rem;
+    letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px;
+  }
+  .hero-eyebrow::before{content:""; width:22px; height:2px; background:var(--amber-light); display:inline-block;}
+  .hero h1{
+    font-size:3.2rem; font-weight:700; max-width:780px; line-height:1.08;
+    margin-bottom:20px;
+  }
+  .hero h1 em{font-style:italic; color:var(--amber-light); font-weight:600;}
+  .hero p.lead{
+    font-size:1.08rem; color:#c3cede; max-width:560px; margin-bottom:34px;
+  }
+
+  /* Search card */
+  .search-card{
+    background:var(--paper);
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 24px 60px rgba(8,16,32,0.35);
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr auto;
+    gap:14px;
+    max-width:900px;
+  }
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);}
+  .field select, .field input{
+    border:1px solid var(--line); border-radius:8px; padding:11px 12px;
+    font-family:'Manrope'; font-size:0.92rem; background:#fff; color:var(--ink);
+  }
+  .search-card .btn-amber{align-self:flex-end; justify-content:center; padding:12px 26px;}
+
+  /* stat strip */
+  .stat-strip{
+    display:flex; gap:44px; margin-top:46px; flex-wrap:wrap;
+  }
+  .stat b{display:block; font-family:'Fraunces'; font-size:1.9rem; color:var(--amber-light);}
+  .stat span{font-size:0.8rem; color:#aebbcf;}
+
+  /* ===== Section shared ===== */
+  section{padding:64px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:34px; gap:20px; flex-wrap:wrap;
+  }
+  .section-head .tag{
+    color:var(--secondary); font-weight:700; font-size:0.76rem;
+    text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; display:block;
+  }
+  .section-head h2{font-size:2rem; color:var(--navy-900); font-weight:700;}
+  .section-head p{color:var(--ink-soft); max-width:440px; font-size:0.95rem;}
+  .view-all{font-weight:700; color:var(--primary); font-size:0.9rem; border-bottom:2px solid var(--amber); padding-bottom:2px;}
+
+  /* Category pills */
+  .cats{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:50px;}
+  .cat-card{
+    flex:1; min-width:220px;
+    background:var(--navy-900); color:#fff;
+    border-radius:12px; padding:22px;
+    display:flex; align-items:center; gap:16px;
+    border:1px solid transparent;
+    transition:transform .2s, border-color .2s;
+  }
+  .cat-card:hover{transform:translateY(-3px); border-color:var(--amber);}
+  .cat-icon{
+    width:46px; height:46px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+    background:rgba(214,154,58,0.15); color:var(--amber-light);
+  }
+  .cat-card h3{font-size:1.02rem; margin-bottom:2px;}
+  .cat-card span{font-size:0.78rem; color:#a9b6ca;}
+
+  /* Listing grid */
+  .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  .card{
+    background:#fff; border-radius:14px; overflow:hidden;
+    border:1px solid var(--line);
+    transition:box-shadow .2s, transform .2s;
+  }
+  .card:hover{box-shadow:0 18px 40px rgba(15,31,56,0.12); transform:translateY(-4px);}
+  .card-media{
+    height:170px; position:relative;
+    background:linear-gradient(135deg, var(--primary), var(--navy-700));
+    display:flex; align-items:center; justify-content:center;
+    color:rgba(255,255,255,0.85); font-size:2.2rem;
+  }
+  .card-media.house{background:linear-gradient(135deg, var(--secondary), #1d4a3f);}
+  .card-media.land{background:linear-gradient(135deg, #8a6a2f, var(--amber-dark));}
+  .card-media.shop{background:linear-gradient(135deg, var(--navy-700), var(--navy-950));}
+  .badge{
+    position:absolute; top:12px; left:12px;
+    background:rgba(10,22,40,0.75); color:#fff; font-size:0.7rem; font-weight:700;
+    padding:5px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  .badge.rent{background:rgba(47,125,107,0.9);}
+  .badge.sale{background:rgba(214,154,58,0.92); color:var(--navy-950);}
+  .card-body{padding:18px 18px 20px;}
+  .card-body h3{font-size:1.05rem; color:var(--navy-900); margin-bottom:6px;}
+  .card-meta{font-size:0.82rem; color:var(--ink-soft); margin-bottom:14px; display:flex; gap:6px; align-items:center;}
+  .card-meta::before{content:"📍"; font-size:0.8rem;}
+  .card-foot{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:14px; border-top:1px dashed var(--line);
+  }
+  .price{font-family:'Fraunces'; font-weight:700; color:var(--primary); font-size:1.15rem;}
+  .price small{font-family:'Manrope'; font-weight:600; font-size:0.72rem; color:var(--ink-soft);}
+  .price.amber-price{color:var(--amber-dark);}
+  .detail-link{
+    font-size:0.8rem; font-weight:700; color:#fff; background:var(--navy-900);
+    padding:8px 14px; border-radius:7px;
+  }
+  .detail-link:hover{background:var(--amber-dark);}
+
+  /* Meherado band */
+  .band{background:var(--navy-900); color:#fff;}
+  .band .section-head h2{color:#fff;}
+  .band .section-head p{color:#aebbcf;}
+  .band .card{background:var(--navy-800); border-color:rgba(255,255,255,0.08);}
+  .band .card-body h3{color:#fff;}
+  .band .card-meta{color:#9fadc4;}
+  .band .card-foot{border-top-color:rgba(255,255,255,0.12);}
+
+  /* Why us */
+  .why{background:var(--paper);}
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:10px;}
+  .why-item{padding:26px 20px; border-radius:12px; background:#fff; border:1px solid var(--line);}
+  .why-item .num{font-family:'Fraunces'; color:var(--amber); font-size:1.6rem; font-weight:700; margin-bottom:10px; display:block;}
+  .why-item h3{font-size:1rem; color:var(--navy-900); margin-bottom:8px;}
+  .why-item p{font-size:0.86rem; color:var(--ink-soft);}
+
+  /* Footer */
+  footer{background:var(--navy-950); color:#aebbcf; padding:56px 0 24px;}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,0.08);}
+  .foot-grid h4{color:#fff; font-size:0.85rem; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.08em;}
+  .foot-grid ul{list-style:none;}
+  .foot-grid li{margin-bottom:10px; font-size:0.87rem;}
+  .foot-grid a:hover{color:var(--amber-light);}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:22px; font-size:0.78rem; flex-wrap:wrap; gap:10px;}
+
+  /* ===== Login Modal ===== */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(10,16,28,0.72);
+    display:none; align-items:center; justify-content:center; z-index:200;
+    padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--paper); border-radius:16px; width:100%; max-width:420px;
+    padding:36px 32px 30px; position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,0.4);
+  }
+  .modal-close{
+    position:absolute; top:16px; right:18px; background:none; border:none;
+    font-size:1.3rem; color:var(--ink-soft); cursor:pointer;
+  }
+  .modal .logo-mark{margin-bottom:16px;}
+  .modal h2{font-size:1.5rem; color:var(--navy-900); margin-bottom:6px;}
+  .modal p.sub{font-size:0.88rem; color:var(--ink-soft); margin-bottom:24px;}
+  .tabs{display:flex; background:#eee9dd; border-radius:9px; padding:4px; margin-bottom:22px;}
+  .tab{flex:1; text-align:center; padding:9px; border-radius:6px; font-weight:700; font-size:0.85rem; cursor:pointer; color:var(--ink-soft);}
+  .tab.active{background:#fff; color:var(--navy-900); box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  .form-group{margin-bottom:16px; display:flex; flex-direction:column; gap:6px;}
+  .form-group label{font-size:0.82rem; font-weight:700; color:var(--navy-900);}
+  .form-group input{
+    padding:12px 14px; border-radius:8px; border:1px solid var(--line);
+    font-family:'Manrope'; font-size:0.92rem; background:#fff;
+  }
+  .form-group input:focus{outline:2px solid var(--primary); outline-offset:1px; border-color:transparent;}
+  .form-row-between{display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; margin-bottom:20px;}
+  .form-row-between a{color:var(--primary); font-weight:700;}
+  .btn-full{width:100%; justify-content:center; padding:13px;}
+  .modal-note{text-align:center; font-size:0.82rem; color:var(--ink-soft); margin-top:18px;}
+  .modal-note a{color:var(--amber-dark); font-weight:700;}
+
+  @media(max-width:900px){
+    nav.mainnav{display:none;}
+    .hero h1{font-size:2.2rem;}
+    .search-card{grid-template-columns:1fr 1fr; }
+    .stat-strip{gap:26px;}
+    .grid{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .search-card{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .cats{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Suuq ugu weyn ee Dhulka, Guryaha iyo Meheradaha ee Soomaaliya <span class="amberdot">●</span> Mudnaanta waa Kaa</span>
+    <span>📞 +252 61 000 0000</span>
+  </div>
+</div>
+
+<header class="main">
+  <div class="wrap">
+    <div class="logo">
+      <div class="logo-mark">SW</div>
+      <div class="logo-text">
+        <div class="display">Suuq Weyne</div>
+        <small>Dhul • Guryo • Meherado</small>
+      </div>
+    </div>
+    <nav class="mainnav">
+      <a href="#dhul">Dhul</a>
+      <a href="#guryo">Guryo</a>
+      <a href="#apartment">Apartment</a>
+      <a href="#meherado">Meherado</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-ghost" onclick="openModal('login')">Gal Akoonka</button>
+      <button class="btn btn-amber" onclick="openModal('signup')">Isdiiwaangeli</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">Suuq lagu kalsoonaan karo</span>
+    <h1>Hel <em>guriga</em>, dhulka ama meherada <em>saxda ah</em> — hal meel.</h1>
+    <p class="lead">Ka raadi kumanaan xayeysiis oo ku saabsan dhul, guryo, apartment kiro ah iyo meherado iib ah — dhammaantood lacagtoodu si cad ayey u qoran yihiin.</p>
+
+    <div class="search-card">
+      <div class="field">
+        <label>Nooca</label>
+        <select>
+          <option>Dhammaan Noocyada</option>
+          <option>Dhul</option>
+          <option>Guryo</option>
+          <option>Apartment (Kiro)</option>
+          <option>Meherado (Iib)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Magaalada</label>
+        <select>
+          <option>Muqdisho</option>
+          <option>Hargeysa</option>
+          <option>Kismaayo</option>
+          <option>Boosaaso</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Qiimaha ugu badan</label>
+        <input type="text" placeholder="Tusaale: $50,000">
+      </div>
+      <button class="btn btn-amber">🔍 Raadi</button>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat"><b>4,200+</b><span>Xayeysiisyo firfircoon</span></div>
+      <div class="stat"><b>1,850+</b><span>Guryo & Apartment</span></div>
+      <div class="stat"><b>760+</b><span>Meherado la iibiyay</span></div>
+      <div class="stat"><b>18</b><span>Magaalo oo lagu shaqeeyo</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cats">
+      <div class="cat-card">
+        <div class="cat-icon">🗺️</div>
+        <div><h3>Dhul</h3><span>Deegaan & Magaalo</span></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏠</div>
+        <div><h3>Guryo</h3><span>Iib & Kiro</span></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏢</div>
+        <div><h3>Apartment</h3><span>Kiro ah</span></div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🏪</div>
+        <div><h3>Meherado</h3><span>Iib ah</span></div>
+      </div>
+    </div>
+
+    <div id="dhul" class="section-head">
+      <div>
+        <span class="tag">Dhul</span>
+        <h2>Dhulal la iibiyo</h2>
+        <p>Dhulal deegaan iyo kuwo magaalo oo leh warqado sharci ah.</p>
+      </div>
+      <a class="view-all" href="#">Dhammaan Dhulka →</a>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-media land">🗺️<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Dhul 400 m² — Kaxda</h3>
+          <div class="card-meta">Muqdisho, Kaxda</div>
+          <div class="card-foot">
+            <div class="price">$28,000 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media land">🗺️<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Dhul 600 m² — Jasiira</h3>
+          <div class="card-meta">Muqdisho, Jasiira</div>
+          <div class="card-foot">
+            <div class="price">$52,000 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media land">🗺️<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Dhul 800 m² — Ina Cabdulle</h3>
+          <div class="card-meta">Hargeysa, Ina Cabdulle</div>
+          <div class="card-foot">
+            <div class="price">$34,500 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper);">
+  <div class="wrap">
+    <div id="guryo" class="section-head">
+      <div>
+        <span class="tag">Guryo</span>
+        <h2>Guryo Iib & Kiro ah</h2>
+        <p>Guryo qoys oo ku yaal xaafado ammaan ah, oo diyaar u ah in la iibsado ama la kiraysto.</p>
+      </div>
+      <a class="view-all" href="#">Dhammaan Guryaha →</a>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-media house">🏠<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Guri 4 Qol — Xamar Weyne</h3>
+          <div class="card-meta">Muqdisho, Xamar Weyne</div>
+          <div class="card-foot">
+            <div class="price">$95,000 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media house">🏠<span class="badge rent">Kiro</span></div>
+        <div class="card-body">
+          <h3>Guri 3 Qol — Taleex</h3>
+          <div class="card-meta">Muqdisho, Taleex</div>
+          <div class="card-foot">
+            <div class="price">$650 <br><small>bishii</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media house">🏠<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Guri 5 Qol — 26 Juun</h3>
+          <div class="card-meta">Hargeysa, 26 Juun</div>
+          <div class="card-foot">
+            <div class="price">$120,000 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div id="apartment" class="section-head">
+      <div>
+        <span class="tag">Apartment</span>
+        <h2>Apartment Kiro ah</h2>
+        <p>Qol-qolo casri ah oo la kiraysto bille ahaan, oo leh adeegyo dheeraad ah.</p>
+      </div>
+      <a class="view-all" href="#">Dhammaan Apartment-ka →</a>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-media">🏢<span class="badge rent">Kiro</span></div>
+        <div class="card-body">
+          <h3>Apartment 2 Qol — Bakaaraha</h3>
+          <div class="card-meta">Muqdisho, Bakaaraha</div>
+          <div class="card-foot">
+            <div class="price">$450 <br><small>bishii</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media">🏢<span class="badge rent">Kiro</span></div>
+        <div class="card-body">
+          <h3>Apartment Studio — Wadajir</h3>
+          <div class="card-meta">Muqdisho, Wadajir</div>
+          <div class="card-foot">
+            <div class="price">$280 <br><small>bishii</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media">🏢<span class="badge rent">Kiro</span></div>
+        <div class="card-body">
+          <h3>Apartment 3 Qol — Ceel Gaab</h3>
+          <div class="card-meta">Hargeysa, Ceel Gaab</div>
+          <div class="card-foot">
+            <div class="price">$520 <br><small>bishii</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="meherado">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag" style="color:var(--amber-light);">Meherado</span>
+        <h2>Meherado Iib ah</h2>
+        <p>Dukaamo, maqaayado, iyo goobo ganacsi oo diyaar u ah in la iibsado.</p>
+      </div>
+      <a class="view-all" style="color:var(--amber-light); border-color:var(--amber-light);" href="#">Dhammaan Meheradaha →</a>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-media shop">🏪<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Dukaan Alaab Guri — Suuqa Xamar</h3>
+          <div class="card-meta">Muqdisho, Suuqa Xamar</div>
+          <div class="card-foot">
+            <div class="price amber-price">$18,000 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media shop">🏪<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Maqaaxi Casri ah — Km4</h3>
+          <div class="card-meta">Muqdisho, Km4</div>
+          <div class="card-foot">
+            <div class="price amber-price">$32,500 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-media shop">🏪<span class="badge sale">Iib</span></div>
+        <div class="card-body">
+          <h3>Bakaaraha Ganacsi — Suuq Bakaaraha</h3>
+          <div class="card-meta">Muqdisho, Bakaaraha</div>
+          <div class="card-foot">
+            <div class="price amber-price">$24,000 <br><small>hal mar</small></div>
+            <a class="detail-link" href="#">Faahfaahin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="tag">Sababaha</span>
+        <h2>Waa maxay sababta lagu kalsoonaan karo Suuq Weyne?</h2>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="num">01</span>
+        <h3>Xaqiijin Xayeysiis</h3>
+        <p>Xayeysiis kasta waa la xaqiijiyaa ka hor inta aan la daabicin.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">02</span>
+        <h3>Lacag Cad</h3>
+        <p>Qiimaha guri, dhul iyo meherad kasta si cad ayaa loogu qoraa.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">03</span>
+        <h3>La Xiriir Toos ah</h3>
+        <p>Kula xiriir milkiilaha xayeysiiska si toos ah, kaligaa dhexdhexaadin ma jirto.</p>
+      </div>
+      <div class="why-item">
+        <span class="num">04</span>
+        <h3>Isdiiwaangelin Fudud</h3>
+        <p>Samee akoon daqiiqado gudahood, dabadeedna dhig xayeysiiskaaga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px;">
+          <div class="logo-mark">SW</div>
+          <div class="logo-text"><div class="display">Suuq Weyne</div></div>
+        </div>
+        <p style="font-size:0.86rem; max-width:280px; color:#a9b6ca;">Suuqa aad kaga gadataan dhul, guryo, apartment kiro ah iyo meherado — dhammaan hal meel.</p>
+      </div>
+      <div>
+        <h4>Bogagga</h4>
+        <ul>
+          <li><a href="#dhul">Dhul</a></li>
+          <li><a href="#guryo">Guryo</a></li>
+          <li><a href="#apartment">Apartment</a></li>
+          <li><a href="#meherado">Meherado</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Shirkadda</h4>
+        <ul>
+          <li><a href="#">Nagu Saabsan</a></li>
+          <li><a href="#">Xiriirka</a></li>
+          <li><a href="#">Xeerarka</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>La Xiriir</h4>
+        <ul>
+          <li>Muqdisho, Soomaaliya</li>
+          <li>+252 61 000 0000</li>
+          <li>info@suuqweyne.so</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Suuq Weyne. Dhammaan xuquuqda way dhowran tahay.</span>
+      <span>Loo sameeyay Soomaalida 🇸🇴</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Login / Signup Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="logo-mark">SW</div>
+    <h2 id="modalTitle">Ku soo dhawoow dib</h2>
+    <p class="sub" id="modalSub">Gal akoonkaaga si aad u dhajiso ama u xiliso xayeysiisyadaada.</p>
+
+    <div class="tabs">
+      <div class="tab active" id="tabLogin" onclick="switchTab('login')">Gal Akoonka</div>
+      <div class="tab" id="tabSignup" onclick="switchTab('signup')">Isdiiwaangeli</div>
+    </div>
+
+    <form onsubmit="event.preventDefault(); alert('Tijaabo ah — koodhka backend-ka lama xirin.');">
+      <div class="form-group" id="nameGroup" style="display:none;">
+        <label>Magaca oo dhan</label>
+        <input type="text" placeholder="Tusaale: Cabdi Maxamed">
+      </div>
+      <div class="form-group">
+        <label>Email ama Taleefan</label>
+        <input type="text" placeholder="tusaale@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Furaha Sirta ah</label>
+        <input type="password" placeholder="••••••••" required>
+      </div>
+      <div class="form-row-between">
+        <label style="display:flex; align-items:center; gap:6px; font-weight:500;">
+          <input type="checkbox" style="width:auto;"> I xasuuso
+        </label>
+        <a href="#">Furaha ma ilowday?</a>
+      </div>
+      <button type="submit" class="btn btn-amber btn-full">Gal Akoonka</button>
+    </form>
+    <p class="modal-note" id="modalNote">Akoon ma lihid? <a onclick="switchTab('signup')" href="javascript:void(0)">Isdiiwaangeli halkan</a></p>
+  </div>
+</div>
+
+<script>
+  function openModal(type){
+    document.getElementById('modalOverlay').classList.add('open');
+    switchTab(type);
+  }
+  function closeModal(){
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+  function switchTab(type){
+    const isLogin = type === 'login';
+    document.getElementById('tabLogin').classList.toggle('active', isLogin);
+    document.getElementById('tabSignup').classList.toggle('active', !isLogin);
+    document.getElementById('nameGroup').style.display = isLogin ? 'none' : 'flex';
+    document.getElementById('modalTitle').textContent = isLogin ? 'Ku soo dhawoow dib' : 'Samee Akoon Cusub';
+    document.getElementById('modalSub').textContent = isLogin
+      ? 'Gal akoonkaaga si aad u dhajiso ama u xiliso xayeysiisyadaada.'
+      : 'Isdiiwaangeli si aad u dhajiso xayeysiisyadaada dhulka, guryaha iyo meheradaha.';
+    document.querySelector('.btn-full').textContent = isLogin ? 'Gal Akoonka' : 'Isdiiwaangeli';
+    document.getElementById('modalNote').innerHTML = isLogin
+      ? 'Akoon ma lihid? <a onclick="switchTab(\'signup\')" href="javascript:void(0)">Isdiiwaangeli halkan</a>'
+      : 'Akoon horeba u leedahay? <a onclick="switchTab(\'login\')" href="javascript:void(0)">Gal halkan</a>';
+  }
+  document.getElementById('modalOverlay').addEventListener('click', function(e){
+    if(e.target === this) closeModal();
+  });
+</script>
+
+</body>
+</html>
